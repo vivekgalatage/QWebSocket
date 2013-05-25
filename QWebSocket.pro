@@ -28,10 +28,13 @@
 TEMPLATE = subdirs
 CONFIG += ordered
 
-websocketpp.file = third-party/websocketpp.pro
+include('common.pri')
 
+websocketpp.file = third-party/websocketpp.pro
 SUBDIRS += websocketpp
 
 echo_server.file = third-party/echo_server.pro
-
 SUBDIRS += echo_server
+
+libQWebSocket.file = libQWebSocket.pro
+SUBDIRS += libQWebSocket

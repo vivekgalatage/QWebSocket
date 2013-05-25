@@ -31,9 +31,6 @@ TARGET = websocketpp
 
 include(../common.pri)
 
-OBJECTS_DIR = $$ROOT_OBJS_DIR
-DESTDIR = $$ROOT_BIN_DIR
-
 LIBS += \
     -lboost_system \
     -lboost_date_time \

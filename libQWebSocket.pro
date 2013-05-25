@@ -25,23 +25,14 @@
 # of the authors and should not be interpreted as representing official policies,
 # either expressed or implied, of the FreeBSD Project.
 
-TEMPLATE = app
-TARGET = echo_server
+TEMPLATE = lib
+CONFIG += sharedlib
+TARGET = QWebSocket
 
-include(../common.pri)
-
-LIBS += \
-    -L$$ROOT_BIN_DIR \
-    -lwebsocketpp \
-    -lboost_system \
-    -lboost_date_time \
-    -lboost_regex \
-    -lboost_random \
-    -lboost_program_options \
-    -lboost_thread
+include('common.pri')
 
 INCLUDEPATH += \
-    websocketpp/examples/echo_server
+    src
 
 SOURCES += \
-    websocketpp/examples/echo_server/echo_server.cpp
+    src\QWebSocket.cpp
