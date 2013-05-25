@@ -30,4 +30,5 @@ out/
 
 # ingore generated files
 Makefile*
+moc_*
 *.o

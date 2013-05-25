@@ -27,7 +27,9 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 #include "QWebSocket.h"
+#include "QWebSocketServer.h"
 
-QWebSocket::QWebSocket(int port)
+QWebSocketServer::QWebSocketServer()
 {
+    QWebSocket::SocketType type = QWebSocket::TypeServer;
 }

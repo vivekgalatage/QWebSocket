@@ -29,13 +29,16 @@
 #ifndef QWEBSOCKET_H
 #define QWEBSOCKET_H
 
-#include <QObject>
-
-class QWebSocket : public QObject
+class QWebSocket
 {
-    Q_OBJECT
 public:
-    QWebSocket();
+    enum SocketType{
+        TypeServer,
+        TypeClient
+    };
+
+    virtual int port() = 0;
+    virtual SocketType type() = 0;
 };
 
 #endif // QWEBSOCKET_H

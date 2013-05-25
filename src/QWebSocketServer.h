@@ -26,8 +26,16 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the FreeBSD Project.
  */
-#include "QWebSocket.h"
+#ifndef QWEBSOCKETSERVER_H
+#define QWEBSOCKETSERVER_H
 
-QWebSocket::QWebSocket(int port)
+#include <QTcpServer>
+
+class QWebSocketServer : public QTcpServer
 {
-}
+    Q_OBJECT
+public:
+    QWebSocketServer();
+};
+
+#endif // QWEBSOCKETSERVER_H
