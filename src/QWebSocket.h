@@ -38,7 +38,7 @@ public:
     };
 
     virtual int port() = 0;
-    virtual SocketType type() = 0;
+    virtual Type type() = 0;
 };
 
 #endif // QWEBSOCKET_H

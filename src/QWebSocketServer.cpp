@@ -31,5 +31,5 @@
 
 QWebSocketServer::QWebSocketServer()
 {
-    QWebSocket::SocketType type = QWebSocket::TypeServer;
+    QWebSocket::Type type = QWebSocket::TypeServer;
 }
