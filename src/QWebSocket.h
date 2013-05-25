@@ -32,7 +32,7 @@
 class QWebSocket
 {
 public:
-    enum SocketType{
+    enum Type {
         TypeServer,
         TypeClient
     };
