@@ -7,10 +7,10 @@ WebSocket server and client library
 Getting the source and building
 ===============================
 
-git clone --recursive https://github.com/vivekgalatage/QWebSocket.git
-cd QWebSocket
-qmake
-make
+  $ git clone --recursive https://github.com/vivekgalatage/QWebSocket.git
+  $ cd QWebSocket
+  $ qmake
+  $ make
 
 
 Test echo_server
