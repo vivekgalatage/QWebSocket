@@ -26,8 +26,26 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the FreeBSD Project.
  */
+
 #include "QWebSocket.h"
 
-QWebSocket::QWebSocket(int port)
+class QWebSocketPrivate
 {
+    friend class QWebSocket;
+public:
+    QWebSocketPrivate();
+
+private:
+    QWebSocket::SocketType m_type;
+};
+
+QWebSocket::QWebSocket()
+    : d(new QWebSocketPrivate())
+{
+
+}
+
+inline QWebSocket::SocketType QWebSocket::type() const
+{
+    return d->m_type;
 }

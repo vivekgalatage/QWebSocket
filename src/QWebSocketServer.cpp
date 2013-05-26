@@ -26,10 +26,21 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the FreeBSD Project.
  */
-#include "QWebSocket.h"
 #include "QWebSocketServer.h"
 
-QWebSocketServer::QWebSocketServer()
+QWebSocketServer::QWebSocketServer(int port)
+    : m_port(port)
 {
-    QWebSocket::Type type = QWebSocket::TypeServer;
+
 }
+
+bool QWebSocketServer::listen()
+{
+    return true;
+}
+
+inline int QWebSocketServer::port() const
+{
+    return m_port;
+}
+

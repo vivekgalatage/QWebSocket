@@ -29,16 +29,35 @@
 #ifndef QWEBSOCKET_H
 #define QWEBSOCKET_H
 
-class QWebSocket
+#include <QAbstractSocket>
+#include <QObject>
+
+class QWebSocketPrivate;
+
+class QWebSocket : public QObject
 {
+    Q_OBJECT;
+
 public:
-    enum Type {
-        TypeServer,
-        TypeClient
+    enum SocketType {
+        TypeWebSocketServer,
+        TypeWebSocketClient
     };
 
-    virtual int port() = 0;
-    virtual Type type() = 0;
+    QWebSocket();
+
+    SocketType type() const;
+
+    int sendMessage(const QString& message);
+
+signals:
+    void messageReceived(const QString& message);
+    void connected();
+    void disconnected();
+    void error(QAbstractSocket::SocketError socketError);
+
+private:
+    QWebSocketPrivate* d;
 };
 
 #endif // QWEBSOCKET_H

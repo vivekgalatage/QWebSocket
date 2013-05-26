@@ -31,7 +31,8 @@ TARGET = QWebSocket
 
 include('common.pri')
 
-QT += network
+QT += \
+    network
 
 INCLUDEPATH += \
     src
@@ -41,4 +42,5 @@ HEADERS += \
     src/QWebSocketServer.h
 
 SOURCES += \
+    src/QWebSocket.cpp \
     src/QWebSocketServer.cpp

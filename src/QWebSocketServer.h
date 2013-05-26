@@ -29,13 +29,23 @@
 #ifndef QWEBSOCKETSERVER_H
 #define QWEBSOCKETSERVER_H
 
-#include <QTcpServer>
+#include "QWebSocket.h"
 
-class QWebSocketServer : public QTcpServer
+#include <QObject>
+
+class QWebSocketServer : public QObject
 {
     Q_OBJECT
 public:
-    QWebSocketServer();
+    QWebSocketServer(int port);
+
+    bool listen();
+
+    int port() const;
+
+private:
+    int m_port;
+    QWebSocket m_socket;
 };
 
 #endif // QWEBSOCKETSERVER_H
