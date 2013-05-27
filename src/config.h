@@ -27,60 +27,13 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-#include "QWebSocketServer.h"
-#include "../third-party/websocketpp/src/websocketpp.hpp"
+#ifndef CONFIG_H
+#define CONFIG_H
 
-using websocketpp::server;
+#if defined(BUILD_SHARED_LIBRARY)
+    #define EXPORT Q_DECL_EXPORT
+#else
+    #define EXPORT Q_DECL_IMPORT
+#endif // BUILD_SHARED_LIBRARY
 
-class QWebSocketServerPrivate : public server::handler
-{
-    friend class QWebSocketServer;
-
-public:
-    QWebSocketServerPrivate(int port);
-
-    // Methods from websocketpp::server::handler
-    void on_message(connection_ptr conn, message_ptr message);
-
-    void listen();
-
-private:
-    int m_port;
-    server::handler::ptr m_handler;
-    server m_server;
-};
-
-
-QWebSocketServerPrivate::QWebSocketServerPrivate(int port)
-    : m_port(port)
-    , m_handler(this)
-    , m_server(m_handler)
-{
-}
-
-void QWebSocketServerPrivate::on_message(connection_ptr conn, message_ptr message)
-{
-    conn->send(message->get_payload(), message->get_opcode());
-}
-
-void QWebSocketServerPrivate::listen()
-{
-    m_server.listen(m_port);
-}
-
-QWebSocketServer::QWebSocketServer(int port)
-    : d(new QWebSocketServerPrivate(port))
-{
-
-}
-
-void QWebSocketServer::listen()
-{
-    d->listen();
-}
-
-inline int QWebSocketServer::port() const
-{
-    return d->m_port;
-}
-
+#endif // CONFIG_H

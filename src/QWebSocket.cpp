@@ -39,6 +39,14 @@ private:
     QWebSocket::SocketType m_type;
 };
 
+QWebSocketPrivate::QWebSocketPrivate()
+    : m_type(QWebSocket::TypeWebSocketUndefined)
+{
+
+}
+
+
+
 QWebSocket::QWebSocket()
     : d(new QWebSocketPrivate())
 {

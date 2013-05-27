@@ -25,16 +25,22 @@
 # of the authors and should not be interpreted as representing official policies,
 # either expressed or implied, of the FreeBSD Project.
 
-TEMPLATE = subdirs
-CONFIG += ordered
+TEMPLATE += app
+TARGET = test
 
-include('common.pri')
+QT += widgets
 
-websocketpp.file = third-party/websocketpp.pro
-SUBDIRS += websocketpp
+include(../common.pri)
 
-libQWebSocket.file = libQWebSocket.pro
-SUBDIRS += libQWebSocket
+LIBS += \
+    -lboost_system \
+    -lboost_date_time \
+    -lboost_regex \
+    -lboost_random \
+    -lboost_program_options \
+    -lboost_thread \
+    -L$$ROOT_DIR/out/bin \
+    -lQWebSocket
 
-test.file = test/test.pro
-SUBDIRS += test
+SOURCES += \
+    test.cpp

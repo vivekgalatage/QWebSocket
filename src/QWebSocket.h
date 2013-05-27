@@ -26,20 +26,24 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the FreeBSD Project.
  */
+
 #ifndef QWEBSOCKET_H
 #define QWEBSOCKET_H
+
+#include "config.h"
 
 #include <QAbstractSocket>
 #include <QObject>
 
 class QWebSocketPrivate;
 
-class QWebSocket : public QObject
+class EXPORT QWebSocket : public QObject
 {
     Q_OBJECT;
 
 public:
     enum SocketType {
+        TypeWebSocketUndefined,
         TypeWebSocketServer,
         TypeWebSocketClient
     };

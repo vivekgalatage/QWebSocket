@@ -26,26 +26,27 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the FreeBSD Project.
  */
+
 #ifndef QWEBSOCKETSERVER_H
 #define QWEBSOCKETSERVER_H
 
-#include "QWebSocket.h"
+#include "config.h"
 
 #include <QObject>
 
-class QWebSocketServer : public QObject
+class QWebSocketServerPrivate;
+
+class EXPORT QWebSocketServer : public QObject
 {
     Q_OBJECT
 public:
     QWebSocketServer(int port);
 
-    bool listen();
-
     int port() const;
+    void listen();
 
 private:
-    int m_port;
-    QWebSocket m_socket;
+    QWebSocketServerPrivate* d;
 };
 
 #endif // QWEBSOCKETSERVER_H

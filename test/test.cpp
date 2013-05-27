@@ -27,60 +27,12 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-#include "QWebSocketServer.h"
-#include "../third-party/websocketpp/src/websocketpp.hpp"
+#include "../src/QWebSocketServer.h"
 
-using websocketpp::server;
+#include <QApplication>
 
-class QWebSocketServerPrivate : public server::handler
+int main(int argc, char* argv[])
 {
-    friend class QWebSocketServer;
-
-public:
-    QWebSocketServerPrivate(int port);
-
-    // Methods from websocketpp::server::handler
-    void on_message(connection_ptr conn, message_ptr message);
-
-    void listen();
-
-private:
-    int m_port;
-    server::handler::ptr m_handler;
-    server m_server;
-};
-
-
-QWebSocketServerPrivate::QWebSocketServerPrivate(int port)
-    : m_port(port)
-    , m_handler(this)
-    , m_server(m_handler)
-{
-}
-
-void QWebSocketServerPrivate::on_message(connection_ptr conn, message_ptr message)
-{
-    conn->send(message->get_payload(), message->get_opcode());
-}
-
-void QWebSocketServerPrivate::listen()
-{
-    m_server.listen(m_port);
-}
-
-QWebSocketServer::QWebSocketServer(int port)
-    : d(new QWebSocketServerPrivate(port))
-{
+    QWebSocketServer server(7890);
 
 }
-
-void QWebSocketServer::listen()
-{
-    d->listen();
-}
-
-inline int QWebSocketServer::port() const
-{
-    return d->m_port;
-}
-

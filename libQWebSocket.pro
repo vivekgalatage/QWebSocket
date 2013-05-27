@@ -34,6 +34,10 @@ include('common.pri')
 QT += \
     network
 
+LIBS += \
+    -L$$ROOT_DIR/out/bin \
+    -lwebsocketpp
+
 INCLUDEPATH += \
     src
 
