@@ -29,22 +29,30 @@ TEMPLATE = lib
 CONFIG += sharedlib
 TARGET = QWebSocket
 
-include('common.pri')
+include('../common.pri')
 
 QT += \
     network
 
+BOOST_LIBRARY_PATH = $$(BOOST_LIBS)
+isEmpty(BOOST_LIBRARY_PATH) {
+    error("Please define BOOST_LIBS to point to boost library install patch e.g. /usr/lib")
+}
+
 LIBS += \
+    -lboost_system \
+    -lboost_date_time \
+    -lboost_regex \
+    -lboost_random \
+    -lboost_program_options \
+    -lboost_thread \
     -L$$ROOT_DIR/out/bin \
     -lwebsocketpp
 
-INCLUDEPATH += \
-    src
-
 HEADERS += \
-    src/QWebSocket.h \
-    src/QWebSocketServer.h
+    QWebSocket.h \
+    QWebSocketServer.h
 
 SOURCES += \
-    src/QWebSocket.cpp \
-    src/QWebSocketServer.cpp
+    QWebSocket.cpp \
+    QWebSocketServer.cpp

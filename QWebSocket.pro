@@ -33,7 +33,7 @@ include('common.pri')
 websocketpp.file = third-party/websocketpp.pro
 SUBDIRS += websocketpp
 
-libQWebSocket.file = libQWebSocket.pro
+libQWebSocket.file = src/libQWebSocket.pro
 SUBDIRS += libQWebSocket
 
 test.file = test/test.pro

@@ -31,13 +31,7 @@ TARGET = websocketpp
 
 include(../common.pri)
 
-LIBS += \
-    -lboost_system \
-    -lboost_date_time \
-    -lboost_regex \
-    -lboost_random \
-    -lboost_program_options \
-    -lboost_thread
+
 
 INCLUDEPATH += \
     websocketpp/src/base64 \

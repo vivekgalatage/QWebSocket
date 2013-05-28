@@ -33,6 +33,8 @@
 
 int main(int argc, char* argv[])
 {
+    QApplication app(argc, argv);
     QWebSocketServer server(7890);
-
+    server.listen();
+    return 0;
 }
