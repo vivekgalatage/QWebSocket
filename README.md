@@ -11,6 +11,8 @@ Getting the source and building
     $ qmake
     $ make
 
+[![Build Status](https://drone.io/github.com/vivekgalatage/QWebSocket/status.png)](https://drone.io/github.com/vivekgalatage/QWebSocket/latest)
+
 Test echo_server
 ================
 Execute ./out/bin/echo_server which by default listens on localhost:9002
